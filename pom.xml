@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .rating input[type="radio"] {
+            display: none;
+        }
+
+        .rating label {
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            background-color: lightgray;
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+        }
+
+        .rating input[type="radio"]:checked + label {
+            background-color: orange;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Feedback Form</h1>
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="course">Course:</label>
+                <input type="text" id="course" name="course" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="class">Class:</label>
+                <input type="text" id="class" name="class" required>
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1"></label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="feedback">Feedback:</label>
+                <textarea id="feedback" name="feedback" rows="4" required></textarea>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById("feedbackForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Validation
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var course = document.getElementById("course").value;
+            var email = document.getElementById("email").value;
+            var className = document.getElementById("class").value;
+            var rating = document.querySelector('input[name="rating"]:checked');
+            var feedback = document.getElementById("feedback").value;
+
+            if (!firstName || !lastName || !course || !email || !className || !rating || !feedback) {
+                alert("All fields are required!");
+                return;
+            }
+
+            // Additional validation logic can be added here if needed
+
+            // Form submission logic can go here (e.g., sending data to the server)
+            console.log("Form submitted successfully!");
+        });
+    </script>
+</body>
+</html>
