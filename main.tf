@@ -9,7 +9,7 @@ terraform {
   backend "remote" {
     organization = "satyam-patel-trident"
     workspaces {
-      name = "gh-actions-demo"
+      name = "gh-actions-demo-java"
     }
   }
 }
@@ -25,6 +25,6 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "example" {
-  name     = "example-resources"
+  name     = "satyam-github-demo"
   location = "East US"
 }
