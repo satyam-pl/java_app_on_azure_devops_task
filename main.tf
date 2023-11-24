@@ -22,6 +22,7 @@ provider "azurerm" {
   client_secret   = "c9c41253-efbb-4ca2-9a82-efc0d3882eaa"
   tenant_id       = "ce3685eb-9b4e-4652-a942-7ea5cda9e6c0"  
 }
+
 resource "azurerm_resource_group" "example" {
   name     = "satyam-github-demo"
   location = "East US"
