@@ -37,6 +37,7 @@ resource "azurerm_app_service" "example_webapp" {
   site_config {
     java_version = "1.8"  # Specify the Java version
     java_container = "TOMCAT"  # Specify the Java container
+    java_container_version = "8.5"
   }
 }
 
