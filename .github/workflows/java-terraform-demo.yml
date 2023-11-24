@@ -3,7 +3,7 @@ name: Terraform and Java App Deployment
 on:
   push:
     branches:
-      - main
+      - feature1
 
 jobs:
   terraform:
