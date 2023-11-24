@@ -34,7 +34,7 @@ jobs:
     needs: terraform
     if: ${{ needs.terraform.result == 'success' }}
 
-   steps:
+    steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -48,15 +48,15 @@ jobs:
 
       - name: Build with Maven
         run: |
-          mvn clean install -f java_app_on_azure_devops_task/pom.xml
-          cd java_app_on_azure_devops_task/target  # Change to target directory where JAR file is generated
+          mvn clean install -f pom.xml
+          cd target  # Change to target directory where JAR file is generated
           ls -la  # List files in the directory for verification purposes
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: 'target/*.jar'
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
