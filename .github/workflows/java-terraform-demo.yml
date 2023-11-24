@@ -34,14 +34,23 @@ jobs:
     needs: terraform
     if: ${{ needs.terraform.result == 'success' }}
 
-    steps:
+   steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Change to project directory
+        run: cd java_app_on_azure_devops_task  # Replace 'java_app_on_azure_devops_task' with your repository name
+
       - name: Set up Java version
         uses: actions/setup-java@v1
         with:
           java-version: '1.8'
 
       - name: Build with Maven
-        run: mvn clean install
+        run: |
+          mvn clean install -f java_app_on_azure_devops_task/pom.xml
+          cd java_app_on_azure_devops_task/target  # Change to target directory where JAR file is generated
+          ls -la  # List files in the directory for verification purposes
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
