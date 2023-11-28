@@ -41,10 +41,7 @@ jobs:
           java-version: '1.8'
 
       - name: Build with Maven
-        run: |
-          mvn clean install -f java_app_on_azure_devops_task/pom.xml  # Specify the path to the pom.xml file
-          cd java_app_on_azure_devops_task/target  # Change to the target directory where the JAR file is generated
-          ls -la  # List files in the directory for verification purposes
+        run: mvn clean install -f pom.xml
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
